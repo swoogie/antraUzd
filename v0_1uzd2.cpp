@@ -8,6 +8,7 @@
 #include <algorithm> 
 #include <ctype.h>
 #include <sstream>
+#include "RandInt.hpp"
 
 using std::cout;
 using std::cin;
@@ -80,7 +81,7 @@ void nd(studentoStruct* studentas, int i)
 
 void ivedimas(int studentuSkaicius, studentoStruct* studentas)
 {   
-    srand(time(0));
+    RandInt rnd{1,10};
     for(int i = 0; i < studentuSkaicius; i++)
     {
         cout << "Studento vardas: " << endl;
@@ -106,7 +107,7 @@ void ivedimas(int studentuSkaicius, studentoStruct* studentas)
                 
                 for(int j=0;j<studentas[i].pazymiuSkaicius;j++)
                 {
-                    studentas[i].ndRez[j] = (rand()%(10)) + 1; 
+                    studentas[i].ndRez[j] = rnd(); 
                     cout << studentas[i].ndRez[j] << " ";
                 }
                 cout << endl;
@@ -130,7 +131,7 @@ void ivedimas(int studentuSkaicius, studentoStruct* studentas)
 
         if(y == "Y" || y == "y")
         {
-            studentas[i].egzamRez = (rand()%(10))+1;
+            studentas[i].egzamRez = rnd();
             cout << studentas[i].egzamRez << endl;
         }
         else

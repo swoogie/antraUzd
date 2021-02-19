@@ -9,6 +9,7 @@
 #include <random>
 #include <ctype.h>
 #include <algorithm> 
+#include "RandInt.hpp"
 
 using std::cout;
 using std::cin;
@@ -81,7 +82,7 @@ void nd(studentoStruct* studentas, int i)
 
 void ivedimas(int studentuSkaicius, studentoStruct* studentas)
 {   
-    
+    RandInt rnd{1,10};
     srand(time(0));
     for(int i = 0; i < studentuSkaicius; i++)
     {
@@ -107,7 +108,7 @@ void ivedimas(int studentuSkaicius, studentoStruct* studentas)
                 
                 for(int j=0;j<studentas[i].pazymiuSkaicius;j++)
                 {
-                    studentas[i].ndRez.push_back((rand()%(10)) + 1);
+                    studentas[i].ndRez.push_back(rnd());
                     cout << studentas[i].ndRez[j] << " ";
                 }
                 cout << endl;
@@ -135,7 +136,7 @@ void ivedimas(int studentuSkaicius, studentoStruct* studentas)
 
         if(y == "Y" || y == "y")
         {
-            studentas[i].egzamRez = (rand()%(10)) + 1;
+            studentas[i].egzamRez = rnd();
             cout << studentas[i].egzamRez << endl;
         }
         else
