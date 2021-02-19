@@ -61,7 +61,7 @@ void nd(studentoStruct* studentas, int i)
     int kartai = 0;
     int pazymys;
     string str1="0";
-    cout << "Studento pazymiai (kai baigiate rasyti, paspauskite 'enter' 2 kartus): " << endl;
+    cout << "Studento pazymiai (baige rasyti, paspauskite 'enter' 2 kartus): " << endl;
     
     while (str1.length()!=0)
     {
@@ -106,7 +106,7 @@ void ivedimas(int studentuSkaicius, studentoStruct* studentas)
                 
                 for(int j=0;j<studentas[i].pazymiuSkaicius;j++)
                 {
-                    studentas[i].ndRez[j] = rand()%10;
+                    studentas[i].ndRez[j] = (rand()%(10)) + 1; 
                     cout << studentas[i].ndRez[j] << " ";
                 }
                 cout << endl;
@@ -130,7 +130,7 @@ void ivedimas(int studentuSkaicius, studentoStruct* studentas)
 
         if(y == "Y" || y == "y")
         {
-            studentas[i].egzamRez = rand()%10;
+            studentas[i].egzamRez = (rand()%(10))+1;
             cout << studentas[i].egzamRez << endl;
         }
         else
