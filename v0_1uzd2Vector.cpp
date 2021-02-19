@@ -5,7 +5,9 @@
 #include <stdlib.h>
 #include <time.h>
 #include <vector>
+#include <string>
 #include <random>
+#include <ctype.h>
 #include <algorithm> 
 
 using std::cout;
@@ -23,6 +25,26 @@ struct studentoStruct
     double egzamRez;
 };
 
+int neRaide()
+{
+    int n;
+    while(true)
+    {
+        cin >> n;
+        if(!cin)
+        {
+            cout << "Iveskite tinkama reiksme: " << endl;
+            cin.clear();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+        else
+        {
+            return n;
+            break;
+        }    
+    }
+}
+
 void tinkamaReiksme(string &y)
 {
     while (true)
@@ -35,28 +57,31 @@ void tinkamaReiksme(string &y)
     }
 }
 
-void nd(studentoStruct* studentas, int kartai, int i)
+void nd(studentoStruct* studentas, int i)
 {
-    cout << "Studento pazymys: " << endl;
+    int kartai = 0;
     int pazymys;
-    cin >> pazymys;
-    studentas[i].ndRez.push_back(pazymys);
-
-    cout << "Ar norite prideti dar viena pazymi? y/n" << endl;
-    string y;
-    tinkamaReiksme(y);
-
-    if(y == "Y" || y == "y")
+    string str1="0";
+    cout << "Studento pazymiai (kai baigiate rasyti, paspauskite 'enter' 2 kartus): " << endl;
+    
+    while (str1.length()!=0)
     {
-        kartai++;
-        nd(studentas, kartai, i);
-    }
-    else
-        studentas[i].pazymiuSkaicius = kartai+1;
+        cin.clear();
+        cin.sync();
+        getline(cin, str1);
+        if(str1.length()!=0)
+        {
+            pazymys = stoi(str1);
+            studentas[i].ndRez.push_back(pazymys);
+            kartai++;
+        }
+    }    
+    studentas[i].pazymiuSkaicius=kartai;
 }
 
 void ivedimas(int studentuSkaicius, studentoStruct* studentas)
 {   
+    
     srand(time(0));
     for(int i = 0; i < studentuSkaicius; i++)
     {
@@ -67,7 +92,6 @@ void ivedimas(int studentuSkaicius, studentoStruct* studentas)
 
         cout << "Ar zinote pazymiu skaiciu? y/n" << endl;
         string y;
-
         tinkamaReiksme(y);
         
         if(y == "Y" || y == "y")
@@ -103,8 +127,7 @@ void ivedimas(int studentuSkaicius, studentoStruct* studentas)
         }
         else
         {
-            int kartai = 0;
-            nd(studentas, kartai, i);
+            nd(studentas, i);
         }
 
         cout << "Ar norite, kad egzamino balas butu sugeneruotas automatiskai? y/n" << endl;
@@ -150,21 +173,29 @@ void isvedimas(int studentuSkaicius, studentoStruct* studentas)
     string y;
     tinkamaReiksme(y);
     if(y == "Y" || y == "y")
-    for(int i=0; i<studentuSkaicius; i++)
-        cout << studentas[i].vardas << " " << studentas[i].pavarde 
-        << " " << std::setprecision(3) << mediana(studentuSkaicius, studentas, i) << endl;
+    {
+        cout << "Vardas" << std::setw(5+7) << "Pavarde" << std::setw(5+15) << "Vidurkis (med.)" << endl << "------------------------------------------" << endl;
+        for(int i=0; i<studentuSkaicius; i++)
+        {
+            cout << studentas[i].vardas << std::setw(11-studentas[i].vardas.length()+studentas[i].pavarde.length()) << studentas[i].pavarde 
+            << std::setw(13-studentas[i].pavarde.length()+3) << std::fixed << std::setprecision(2) << mediana(studentuSkaicius, studentas, i) << endl;
+        }
+                          
+    }
     else
-    for(int i=0; i<studentuSkaicius; i++)
-        cout << studentas[i].vardas << " " << studentas[i].pavarde 
-        << " " << std::setprecision(3) << vidurkis(studentuSkaicius, studentas, i) << endl;
+    {
+        cout << "Vardas" << std::setw(5+7) << "Pavarde" << std::setw(5+15) << "Vidurkis (vid.)" << endl << "------------------------------------------" << endl;
+
+        for(int i=0; i<studentuSkaicius; i++)
+        cout << studentas[i].vardas << std::setw(11-studentas[i].vardas.length()+studentas[i].pavarde.length()) << studentas[i].pavarde 
+        << std::setw(13-studentas[i].pavarde.length()+3) << std::fixed << std::setprecision(2) << vidurkis(studentuSkaicius, studentas, i) << endl;
+    }
 }
 
 int main()
 {
-    int studentuSkaicius;
-
     cout << "Studentu skaicius: " << endl;
-    cin >> studentuSkaicius;
+    int studentuSkaicius = neRaide();
     
     studentoStruct* studentas = new studentoStruct[studentuSkaicius];
 
