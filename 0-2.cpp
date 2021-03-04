@@ -33,6 +33,11 @@ struct studentoStruct
     int pazymiuSkaicius=0;
     vector<double> ndRez;
     double egzamRez;
+
+    bool operator < (const studentoStruct &stud) const
+    {
+        return vardas.compare(stud.vardas) < 0;
+    }
 };
 
 int neRaide()
@@ -276,6 +281,8 @@ studentoStruct* skaitymas(int &studentuSkaicius)
             }             
         }
     }
+
+    sort(studentas, studentas + studentuSkaicius);
 
     return studentas;
 }
