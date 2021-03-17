@@ -1,11 +1,11 @@
 main:
-	g++ -o main.exe main.cpp failoFun.cpp
+	g++ -o main.exe main.cpp math.cpp fun.cpp
 
 compile:
-	g++ -c main.cpp failoFun.cpp
+	g++ -c main.cpp math.cpp fun.cpp
 
 link:
-	g++ -o main.exe main.o failoFun.o
+	g++ -o main.exe main.o fun.o math.o
 
 del:
 	rm *.o *.exe
