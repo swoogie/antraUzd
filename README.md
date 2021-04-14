@@ -1,5 +1,23 @@
 # antraUzd
 Pazymiu programa
+
+
+V0.1-----
+
+
+V0.2-----
+
+
+V0.3-----
+
+
+V0.4-----
+
+
+V0.5-----
+
+
+V1.0-----
 1 strategija                                          
 su vector                                           
 | Dydis   | Skaitymas | Rusiavimas|                   
