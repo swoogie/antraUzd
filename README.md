@@ -18,6 +18,7 @@ V0.5-----
 
 
 V1.0-----
+
 1 strategija                                          
 su vector                                           
 | Dydis   | Skaitymas | Rusiavimas|                   
