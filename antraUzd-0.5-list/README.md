@@ -1,2 +1,0 @@
-# antraUzd
-Pazymiu programa
