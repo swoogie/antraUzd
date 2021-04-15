@@ -7,15 +7,19 @@ Paleidimo instrukcija:
 4. Po to rašyti "./main"
 
 V0.1-----
+
 Programa nuskaito ranka įvestus duomenis ir su jais atlieka skaičiavimus.
 
 V0.2-----
+
 Programa nuskaito duomenų faile esančius duomenis ir su jais atlieka skaičiavimus.
 
 V0.3-----
+
 Programa panaudoja struktūras ir header failus, taip pat išimčių valdymą.
 
 V0.4-----
+
 Programa pati sugeneruoja duomenų failus, atlieka skaičiavimus ir suskirsto mokinius į "smegenius" ir "besmegenius"
 
 Atlikta programos spartos analizė:
@@ -27,6 +31,7 @@ Atlikta programos spartos analizė:
 | 1000000 | 41.4902 s | 43.7056 s | 0.271286 s | 27.6124 s |
 
 V0.5-----
+
 Naudojami skirtingi konteineriai:
 std::list
 std::deque
@@ -59,7 +64,9 @@ su deque
 
 
 V1.0-----
+
 Naudojamos 2 skirtingos strategijos, pritaikomos konteineriams:
+
 1 strategija - sukuriami du nauji konteineriai "smegeniai" ir "besmegeniai" ir programa juos suskirsto                                         
 su vector                                           
 | Dydis   | Skaitymas | Rusiavimas|  Total    |         
@@ -85,7 +92,8 @@ su deque
 | 100000  | 4.03067 s | 0.006005 s| 4.036675 s|
 | 1000000 | 40.8527 s | 0.062056 s| 40.914756s|
 
-2 strategija - naudojamas tik vienas "besmegeniu" konteineris, o "besmegeniai" yra istrinami is "studentu" konteinerio t.y. jame lieka tik "smegeniai".                                          
+2 strategija - naudojamas tik vienas "besmegeniu" konteineris, o "besmegeniai" yra istrinami is "studentu" konteinerio t.y. jame lieka tik "smegeniai".  
+
 su vector                                           
 | Dydis   | Skaitymas | Rusiavimas|    Total  |                  
 |---------|-----------|-----------|-----------|              
