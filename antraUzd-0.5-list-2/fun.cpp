@@ -37,10 +37,10 @@ void sortedIsvedimas(std::list<studentoSarStruct> studentas)
     ofstream prS("smegeniai.txt");
     ofstream prB("besmegeniai.txt");
     //std::list<studentoSarStruct>::iterator ptr;
-    prS << "Vardas" << setw(15+7) << "Pavarde" << setw(15+15) << "Vidurkis (med.)" << setw(5+15) << "Vidurkis (vid.)" 
+    /*prS << "Vardas" << setw(15+7) << "Pavarde" << setw(15+15) << "Vidurkis (med.)" << setw(5+15) << "Vidurkis (vid.)" 
     << endl << "------------------------------------------------------------------------------" << endl;
     prB << "Vardas" << setw(15+7) << "Pavarde" << setw(15+15) << "Vidurkis (med.)" << setw(5+15) << "Vidurkis (vid.)" 
-    << endl << "------------------------------------------------------------------------------" << endl;
+    << endl << "------------------------------------------------------------------------------" << endl;*/
     std::list<studentoSarStruct> studentasSmegenis;
     std::list<studentoSarStruct> studentasBesmegenis;
 
@@ -52,7 +52,7 @@ void sortedIsvedimas(std::list<studentoSarStruct> studentas)
         {
             std::list<studentoSarStruct>::iterator ptr = studentas.begin();
             std::advance(ptr, N);
-            if(ptr->avgRez <= 5)
+            if(ptr->avgRez < 5)
             {
             studentasBesmegenis.push_back(*ptr);
             studentas.erase(ptr);
@@ -81,7 +81,7 @@ void sortedIsvedimas(std::list<studentoSarStruct> studentas)
         cout << "\nIsvedimas uztruko: "<< diff1.count() << " s\n";*/
 }
 
-void sarIsvedimas(vector<studentoSarStruct> studentas)
+/*void sarIsvedimas(vector<studentoSarStruct> studentas)
 {   
     ofstream pr("rez.txt");
     
@@ -93,7 +93,7 @@ void sarIsvedimas(vector<studentoSarStruct> studentas)
         << setw(23-studentas[i].pavarde.length()+3) << fixed << setprecision(2) << studentas[i].medRez  
         << setw(20-3+3) << fixed << setprecision(2) << studentas[i].avgRez << endl;
     }
-}
+}*/
 
 ifstream failoPasirinkimas()
 {

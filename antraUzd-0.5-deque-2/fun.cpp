@@ -41,13 +41,13 @@ void sortedIsvedimas(std::deque<studentoSarStruct> studentas)
     << endl << "------------------------------------------------------------------------------" << endl;
     prB << "Vardas" << setw(15+7) << "Pavarde" << setw(15+15) << "Vidurkis (med.)" << setw(5+15) << "Vidurkis (vid.)" 
     << endl << "------------------------------------------------------------------------------" << endl;
-    std::deque<studentoSarStruct> studentasSmegenis;
     std::deque<studentoSarStruct> studentasBesmegenis;
 
     auto start = std::chrono::high_resolution_clock::now();
-    for(int i=0;i<studentas.size();i++)
+
+    for(int i=studentas.size();i>0;i--)
     {
-        if(studentas[i].avgRez <= 5)
+        if(studentas[i].avgRez < 5)
         {
             studentasBesmegenis.push_back(studentas[i]);
             studentas.erase(studentas.begin()+i);
@@ -58,11 +58,11 @@ void sortedIsvedimas(std::deque<studentoSarStruct> studentas)
         cout << "\nRusiavimas uztruko: "<< diff.count() << " s\n";
 
     auto start1 = std::chrono::high_resolution_clock::now();
-    for(int i=0;i<studentasSmegenis.size();i++)
+    for(int i=0;i<studentas.size();i++)
     {
-        prS << studentasSmegenis[i].vardas << setw(21-studentasSmegenis[i].vardas.length()+studentasSmegenis[i].pavarde.length()) << studentasSmegenis[i].pavarde 
-            << setw(23-studentasSmegenis[i].pavarde.length()+3) << fixed << setprecision(2) << studentasSmegenis[i].medRez  
-            << setw(20-3+3) << fixed << setprecision(2) << studentasSmegenis[i].avgRez << endl;
+        prS << studentas[i].vardas << setw(21-studentas[i].vardas.length()+studentas[i].pavarde.length()) << studentas[i].pavarde 
+            << setw(23-studentas[i].pavarde.length()+3) << fixed << setprecision(2) << studentas[i].medRez  
+            << setw(20-3+3) << fixed << setprecision(2) << studentas[i].avgRez << endl;
     }
     for(int i=0;i<studentasBesmegenis.size();i++)
     {

@@ -44,9 +44,9 @@ void sortedIsvedimas(vector<studentoSarStruct> studentas)
     vector<studentoSarStruct> studentasBesmegenis;
 
     auto start = std::chrono::high_resolution_clock::now();
-    for(int i=0;i<studentas.size();i++)
+    for(int i=studentas.size();i>0;i--)
     {
-        if(studentas[i].avgRez <= 5)
+        if(studentas[i].avgRez < 5)
         {
             studentasBesmegenis.push_back(studentas[i]);
             studentas.erase(studentas.begin()+i);
